@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent">
+
+
+        <ImageButton
+            android:id="@+id/Imgmenu"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:focusable="true"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="m-Info"
+            android:textSize="11sp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/Imgmenu"
+            app:layout_constraintStart_toStartOf="@+id/Imgmenu"
+            app:layout_constraintTop_toBottomOf="@id/Imgmenu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

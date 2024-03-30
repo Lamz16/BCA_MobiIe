@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Item aktif -->
+    <item android:drawable="@drawable/icon_home_blue" android:state_checked="true" />
+    <!-- Item tidak aktif -->
+    <item android:drawable="@drawable/icon_home_grey" />
+</selector>

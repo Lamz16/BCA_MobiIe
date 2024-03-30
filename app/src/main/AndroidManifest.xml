@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".di.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/xicon2x"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/xicon2x"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BCAMobiIe"
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.NewpinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QrisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AntarrekeningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MutasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BcakeyboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CardlessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SuccesInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.InputCardActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.KetentuanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.newrek.NewRekActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.newrek.OnboardNewRekActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

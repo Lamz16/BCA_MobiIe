@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/filldotcolor" android:state_selected="true" /> <!-- Dot aktif -->
+    <item android:drawable="@drawable/outlineddot" android:state_selected="false"/> <!-- Dot tidak aktif -->
+</selector>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.bank.bcamobiie.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action android:id="@+id/toMenu1"
+            app:restoreState="true"
+            app:destination="@+id/navigation_minfo"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+
+        <action android:id="@+id/toMenu2"
+            app:restoreState="true"
+            app:destination="@+id/navigation_mTf"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+        <action android:id="@+id/toMenu3"
+            app:restoreState="true"
+            app:destination="@+id/navigation_mPayment"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+        <action android:id="@+id/toMenu4"
+            app:restoreState="true"
+            app:destination="@+id/navigation_mEcomerce"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+        <action android:id="@+id/toMenu5"
+            app:restoreState="true"
+            app:destination="@+id/navigation_mAdmin"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_transaksi"
+        android:label="@string/title_transaksi" />
+
+    <fragment
+        android:id="@+id/navigation_akunsaya"
+        android:name="com.bank.bcamobiie.ui.akunsaya.AkunSayaFragment"
+        android:label="@string/title_akunsaya"
+        tools:layout="@layout/fragment_akun_saya" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.bank.bcamobiie.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_minfo"
+        android:name="com.bank.bcamobiie.ui.home.MinfoFragment"
+        android:label="Minfo"
+        tools:layout="@layout/fragment_minfo" />
+
+    <fragment
+        android:id="@+id/navigation_mTf"
+        android:name="com.bank.bcamobiie.ui.home.TransferFragment"
+        android:label="Mtransfer"
+        tools:layout="@layout/fragment_transfer" />
+
+    <fragment
+        android:id="@+id/navigation_mPayment"
+        android:name="com.bank.bcamobiie.ui.home.PaymentFragment"
+        android:label="Mpayment"
+        tools:layout="@layout/fragment_payment" />
+
+    <fragment
+        android:id="@+id/navigation_mEcomerce"
+        android:name="com.bank.bcamobiie.ui.home.EcomerceFragment"
+        android:label="Mecommerce"
+        tools:layout="@layout/fragment_ecomerce" />
+
+    <fragment
+        android:id="@+id/navigation_mAdmin"
+        android:name="com.bank.bcamobiie.ui.home.MadminFragment"
+        android:label="Madmin"
+        tools:layout="@layout/fragment_madmin" />
+
+</navigation>

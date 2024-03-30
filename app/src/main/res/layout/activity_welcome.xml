@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame_container"
+    android:background="@drawable/xrootmenubg"
+    tools:context=".activity.WelcomeActivity">
+
+    <ImageButton
+        android:id="@+id/btnAbout"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:background="@drawable/ic_info"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTopWelc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="26dp"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTopWelc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <ImageView
+        android:id="@+id/headBca"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
+        android:src="@drawable/rootbcamobilelogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guidelineTopWelc"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"/>
+
+    <ImageButton
+        android:id="@+id/mBca"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/clickmbcaselector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headBca" />
+
+
+    <ImageButton
+        android:id="@+id/klikBca"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/clickklikbcaselector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mBca" />
+    <ImageButton
+        android:id="@+id/infoBca"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/clickinfobcaselector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/klikBca" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/infoBca">
+
+        <ImageButton
+            android:id="@+id/newRek"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/clicknewrekselector" />
+
+        <ImageButton
+            android:id="@+id/changePin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/clickbtnchangepin" />
+
+
+        <ImageButton
+            android:id="@+id/flazz"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/clickflazzselector" />
+
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    <ImageView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/xticker1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitEnd"/>
+
+        <View
+            android:id="@+id/shine"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:background="@drawable/shiningwelcome"
+            android:scaleType="fitEnd"
+            android:layout_marginStart="-150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

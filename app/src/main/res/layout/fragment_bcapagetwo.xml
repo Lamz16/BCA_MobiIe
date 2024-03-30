@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.bcakeyboard.Bcapagetwo">
+    <TextView
+        android:id="@+id/tv1keyTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black2"
+        android:text="@string/_2_langkah_mudah_dengan_bca_keyboard"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@id/tv2keyTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mulai_bertransaksi_dengan_bca_keyboard_ndengan_klik_logo_t_t_di_keyboard_nsmartphone_kamu"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv1keyTwo" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/keyboard_icon_cengkeh"
+        app:layout_constraintBottom_toBottomOf="@+id/tv2keyTwo"
+        app:layout_constraintEnd_toEndOf="@+id/tv2keyTwo"
+        app:layout_constraintStart_toStartOf="@+id/tv2keyTwo" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/key_image_summary_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv2keyTwo"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

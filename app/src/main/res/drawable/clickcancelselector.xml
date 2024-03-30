@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State ketika tombol ditekan -->
+    <item android:drawable="@drawable/normalcanceldown" android:state_pressed="true"/>
+    <!-- State ketika tombol tidak ditekan -->
+    <item android:drawable="@drawable/normalcancelup"/>
+</selector>

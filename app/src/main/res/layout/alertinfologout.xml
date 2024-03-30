@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/bgalertlogout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bglightgray"
+        android:layout_margin="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensansbold"
+        android:text="@string/logout"
+        android:textColor="@color/blue_text_color"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/messageLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensanssemibold"
+        android:text="@string/anda_akan_logout_dari_bca_mobile"
+        android:textSize="14sp"
+        android:textColor="@color/blue_text_color"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@id/bgalertlogout"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/bgalertlogout"
+        app:layout_constraintEnd_toEndOf="@+id/bgalertlogout"
+        app:layout_constraintStart_toStartOf="@+id/bgalertlogout" >
+
+        <ImageButton
+            android:id="@+id/btnCancelLogout"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/clickcancelalertlog"/>
+
+        <ImageButton
+            android:id="@+id/btnLogout"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/clicklogout"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "479513481959",
+    "firebase_url": "https://bca-mobiile-default-rtdb.firebaseio.com",
+    "project_id": "bca-mobiile",
+    "storage_bucket": "bca-mobiile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479513481959:android:e5e7de7710721f46370842",
+        "android_client_info": {
+          "package_name": "com.bank.bcamobiie"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFLSUYj1I_aaNHpYaCeA-L7vXhUTnMKng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479513481959:android:f0eaf4370491df30370842",
+        "android_client_info": {
+          "package_name": "com.bank.superadminbca"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFLSUYj1I_aaNHpYaCeA-L7vXhUTnMKng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

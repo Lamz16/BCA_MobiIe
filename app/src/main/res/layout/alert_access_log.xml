@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/bglightgray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/titleAlertLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kode_akses"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/robotoregular"
+        android:textColor="@color/blue"
+        android:textSize="21sp"/>
+
+    <EditText
+        android:id="@+id/inputPinAcces"
+        style="@style/MyEditTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLength="6"
+        android:inputType="textPassword"
+        android:hint="@string/input_6_alphanum"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_text_black_zeplin2"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@id/linearLyAccesLog"
+        app:layout_constraintStart_toStartOf="@id/linearLyAccesLog"
+        app:layout_constraintTop_toBottomOf="@id/titleAlertLog" />
+
+    <LinearLayout
+        android:id="@+id/linearLyAccesLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputPinAcces">
+
+        <ImageButton
+            android:id="@+id/btnCancelAcces"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/clickcancelalertlog" />
+
+        <ImageButton
+            android:id="@+id/btnLoginAcces"
+            android:layout_marginStart="4dp"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/clickloginalertlog" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
