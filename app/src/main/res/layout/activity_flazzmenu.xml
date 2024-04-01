@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CardlessActivity">
+    tools:context=".activity.FlazzmenuActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCardless"
+        android:id="@+id/toolbarFlazz"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="@drawable/straightline"
@@ -16,32 +16,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvAppbarCardless"
+        android:id="@+id/tvAppbarFlazz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/opensanssemibold"
-        android:text="Cardless"
+        android:text="Flazz"
         android:textColor="@color/blue_text_color"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/indicatorSignalcardless"
+        app:layout_constraintBottom_toBottomOf="@+id/indicatorFlazz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/indicatorSignalcardless" />
+        app:layout_constraintTop_toTopOf="@+id/indicatorFlazz" />
 
     <ImageButton
         android:id="@+id/btnLgNotif"
         android:layout_width="66dp"
         android:layout_height="40dp"
-        app:layout_constraintTop_toTopOf="@id/toolbarCardless"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarCardless"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarFlazz"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp"
-        android:visibility="invisible"
-        android:background="@drawable/selectoreditflazz"/>
+        android:background="@drawable/btn_edit_up"/>
 
     <ImageView
-        android:id="@+id/indicatorSignalcardless"
+        android:id="@+id/indicatorFlazz"
         android:layout_width="16dp"
         android:layout_height="16dp"
         app:layout_constraintTop_toTopOf="@id/btnLgNotif"
@@ -56,28 +55,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarCardless">
+        app:layout_constraintTop_toBottomOf="@id/toolbarFlazz">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+            android:id="@+id/tabLayoutFlazz"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="18dp"
-            app:tabIndicatorColor="@android:color/transparent"
-            app:tabBackground="@drawable/clickpagerselector"
-            app:tabTextColor="@drawable/textselectorcardless"
+            app:tabIndicator="@android:color/transparent"
+            app:tabBackground="@drawable/tabselectedselector"
+            app:tabTextColor="@drawable/textselectorflazz"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
+            android:id="@+id/viewPagerFlazz"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutFlazz" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

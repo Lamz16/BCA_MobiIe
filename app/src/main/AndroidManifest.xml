@@ -18,6 +18,9 @@
         android:theme="@style/Theme.BCAMobiIe"
         tools:targetApi="31">
         <activity
+            android:name=".activity.FlazzmenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.NewpinActivity"
             android:exported="false" />
         <activity

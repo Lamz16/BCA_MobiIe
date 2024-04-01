@@ -14,6 +14,7 @@ import com.bank.bcamobiie.adapter.MenuInHomeAdapter
 import com.bank.bcamobiie.databinding.FragmentPaymentBinding
 import com.bank.bcamobiie.datadummy.DataMenuInHome
 import com.bank.bcamobiie.utils.Utils
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -40,6 +41,10 @@ class PaymentFragment : Fragment(), MenuInHomeAdapter.OnMenuClickListener {
         startIndicatorChangeJob()
 
         val recyclerView: RecyclerView = binding.rvMenuPayment
+        val layoutManager = LinearLayoutManager(requireContext())
+        val itemDecoration = MaterialDividerItemDecoration(requireActivity(), layoutManager.orientation).apply { isLastItemDecorated = false }
+        itemDecoration.setDividerColorResource(requireContext(), R.color.color_line_divider)
+        recyclerView.addItemDecoration(itemDecoration)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = MenuInHomeAdapter(DataMenuInHome.listMenuPayment)
         adapter.setOnMenuItemClickListener(this)

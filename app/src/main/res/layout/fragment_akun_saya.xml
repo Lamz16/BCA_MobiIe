@@ -72,14 +72,13 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
             android:fontFamily="@font/opensansbold"
-            android:text="Paspor BCA Xpresi"
             android:textSize="17sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/bcaCard"
             app:layout_constraintStart_toStartOf="@+id/bcaCard"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 

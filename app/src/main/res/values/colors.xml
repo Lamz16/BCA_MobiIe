@@ -6,6 +6,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="border">#a5a3a4</color>
+    <color name="column">#f9f9fa</color>
     <color name="black2">#171717</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#005FAF</color>
@@ -15,6 +17,7 @@
     <color name="transparant">#00000000</color>
     <color name="color_text_black_zeplin">#4f4f4f</color>
     <color name="color_text_black_zeplin2">#939393</color>
+    <color name="color_line_divider">#124E4E4E</color>
     <color name="navigation_bottom">#F1EFEF</color>
     <color name="navigation_bottom2">#FAF8F8</color>
     <color name="navigation_top">#F6F3F3</color>

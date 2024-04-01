@@ -68,6 +68,14 @@ class MenuInHomeAdapter(private val menuList: List<MenuInHome>) :
         }
 
         holder.teksOptionMen.text = currentMenu.menuName
+
+
+        if (position == itemCount - 1) {
+            val layoutParams = holder.itemView.layoutParams as RecyclerView.LayoutParams
+            layoutParams.bottomMargin = 0
+            holder.itemView.layoutParams = layoutParams
+        }
+
     }
 
 

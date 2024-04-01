@@ -1,13 +1,13 @@
 package com.bank.bcamobiie.ui.akunsaya
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.content.Context
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -107,10 +107,28 @@ class AkunSayaFragment : Fragment(), MenuMyAccAdapter.OnMenuItemClickListener {
                                 for (dataSnapshotChild in dataSnapshot.children) {
                                     val jenisRekening = dataSnapshotChild.child("jenisRek").getValue(String::class.java)
                                     // Tentukan gambar kartu berdasarkan jenis rekening
+                                    when (jenisRekening) {
+                                        "PLATINUM" -> {
+                                            binding.textView4.text = resources.getString(R.string.platinum)
+                                        }
+                                        "GOLD" -> {
+                                            binding.textView4.text = resources.getString(R.string.gold)
+                                        }
+                                        "BLUE" -> {
+                                            binding.textView4.text = resources.getString(R.string.blue)
+                                        }
+                                    }
+
                                     val drawableId = when (jenisRekening) {
-                                        "GOLD" -> R.drawable.bcacardgoldplain
-                                        "BLUE" -> R.drawable.bcacardblueplain
-                                        "PLATINUM" -> R.drawable.bcacardplatinumplain
+                                        "GOLD" -> {
+                                            R.drawable.bcacardgoldplain
+                                        }
+                                        "BLUE" -> {
+                                            R.drawable.bcacardblueplain
+                                        }
+                                        "PLATINUM" -> {
+                                            R.drawable.bcacardplatinumplain
+                                        }
                                         else -> {R.drawable.bcacardplatinumplain}
                                     }
 

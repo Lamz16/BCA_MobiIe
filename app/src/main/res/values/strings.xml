@@ -49,6 +49,7 @@
     <string name="title_payment">Payment</string>
     <string name="title_commerce">Commerce</string>
     <string name="tab_transaksi">TRANSAKSI</string>
+    <string name="tab_info">INFO</string>
     <string name="tab_inbox">INBOX</string>
     <string name="tab_keyboard_one"></string>
     <string name="tab_keboard_two"></string>
@@ -81,5 +82,12 @@
     <string name="kode_akses_yang_baru">Kode Akses yang Baru</string>
     <string name="konfirmasi_kode_akses_yang_baru">Konfirmasi Kode Akses \nyang Baru</string>
     <string name="message_null">107 - Kode Akses Harus 6 karakter \ndengan kombinasi huruf dan angka.</string>
+    <string name="tempelkan_kartu_flazz_ke_area_nfc_ponsel">Tempelkan Kartu Flazz \nke area NFC ponsel</string>
+    <string name="tidak_ada_pesan_yang_tersimpan">Tidak ada pesan yang tersimpan</string>
+    <string name="jenisrek_s">Paspor BCA %s</string>
+
+    <string name="gold">Paspor BCA Gold</string>
+    <string name="blue">Paspor BCA Blue</string>
+    <string name="platinum">Paspor BCA Platinum</string>
 
 </resources>

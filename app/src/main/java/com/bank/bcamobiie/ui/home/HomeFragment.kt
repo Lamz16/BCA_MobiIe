@@ -1,7 +1,9 @@
 package com.bank.bcamobiie.ui.home
 
 import android.content.Intent
+import android.nfc.NfcAdapter
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +17,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.activity.BcakeyboardActivity
 import com.bank.bcamobiie.activity.CardlessActivity
+import com.bank.bcamobiie.activity.FlazzmenuActivity
 import com.bank.bcamobiie.activity.WelcomeActivity
 import com.bank.bcamobiie.adapter.MenuAdapter
+import com.bank.bcamobiie.databinding.AlertFlazzBinding
 import com.bank.bcamobiie.databinding.AlertinfologoutBinding
 import com.bank.bcamobiie.databinding.FragmentHomeBinding
 import com.bank.bcamobiie.datadummy.dataMenu
 import com.bank.bcamobiie.utils.Utils
 import com.bank.bcamobiie.viewmodel.FirebaseDataViewModel
 import com.bank.bcamobiie.viewmodel.InputDataViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -35,6 +40,9 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener{
 
     private var _alertLogout: AlertinfologoutBinding? = null
     private val alertLogout: AlertinfologoutBinding get() = _alertLogout!!
+
+    private var _alertFlazzBinding: AlertFlazzBinding? = null
+    private val alertFlazzBinding: AlertFlazzBinding get() = _alertFlazzBinding!!
 
     private val indicatorImages = Utils.indicatorImages
 
@@ -109,6 +117,8 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener{
 
             7 -> startActivity(Intent(requireContext(), BcakeyboardActivity::class.java))
 
+            8 -> checkNfcStatus()
+
         }
     }
 
@@ -144,6 +154,33 @@ class HomeFragment : Fragment(), MenuAdapter.OnMenuItemClickListener{
             }
         }
 
+    }
+
+    private fun checkNfcStatus() {
+        val nfcAdapter = NfcAdapter.getDefaultAdapter(requireContext())
+        if (nfcAdapter == null || !nfcAdapter.isEnabled) {
+            showNfcDisabledDialog()
+        }else{
+            startActivity(Intent(requireContext(), FlazzmenuActivity::class.java))
+        }
+    }
+
+    private fun showNfcDisabledDialog() {
+        val alertBuilder = MaterialAlertDialogBuilder(requireContext(), R.style.RoundedMaterialDialog)
+        _alertFlazzBinding = AlertFlazzBinding.inflate(layoutInflater)
+        val view = alertFlazzBinding.root
+        alertBuilder.setView(view)
+        val dialog = alertBuilder.create()
+        dialog.show()
+        alertFlazzBinding.apply {
+            cancelNfc.setOnClickListener {
+                dialog.dismiss()
+            }
+            settingsNfc.setOnClickListener {
+                val intent = Intent(Settings.ACTION_NFC_SETTINGS)
+                startActivity(intent)
+            }
+        }
     }
 
 }

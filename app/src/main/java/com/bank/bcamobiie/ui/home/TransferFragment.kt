@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bank.bcamobiie.R
 import com.bank.bcamobiie.activity.AntarrekeningActivity
 import com.bank.bcamobiie.adapter.MenuInHomeAdapter
 import com.bank.bcamobiie.databinding.FragmentTransferBinding
 import com.bank.bcamobiie.datadummy.DataMenuInHome
 import com.bank.bcamobiie.utils.Utils
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -39,6 +41,10 @@ class TransferFragment : Fragment() , MenuInHomeAdapter.OnMenuClickListener {
         startIndicatorChangeJob()
 
         val recyclerView: RecyclerView = binding.rvMenuMtf
+        val layoutManager = LinearLayoutManager(requireContext())
+        val itemDecoration = MaterialDividerItemDecoration(requireActivity(), layoutManager.orientation).apply { isLastItemDecorated = false }
+        itemDecoration.setDividerColorResource(requireContext(), R.color.color_line_divider)
+        recyclerView.addItemDecoration(itemDecoration)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = MenuInHomeAdapter(DataMenuInHome.listMenuTf)
         adapter.setOnMenuItemClickListener(this)

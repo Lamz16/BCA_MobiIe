@@ -40,17 +40,17 @@ object Utils {
         val localeID = Locale("in", "ID")
         val numberFormat = NumberFormat.getNumberInstance(localeID) as DecimalFormat
 
-        numberFormat.minimumFractionDigits = 2
-        numberFormat.maximumFractionDigits = 2
+        numberFormat.minimumFractionDigits = 0 // Ubah minimumFractionDigits menjadi 0
+        numberFormat.maximumFractionDigits = 0 // Ubah maximumFractionDigits menjadi 0
 
         val symbols = numberFormat.decimalFormatSymbols
-        symbols.groupingSeparator = ','
-        symbols.decimalSeparator = '.'
+        symbols.groupingSeparator = '.'
+        symbols.decimalSeparator = ','
         numberFormat.decimalFormatSymbols = symbols
 
-        val formattedAmount = numberFormat.format(amount.toDouble() / 100)
+        val formattedAmount = numberFormat.format(amount)
 
-        return "Rp. $formattedAmount"
+        return "Rp. $formattedAmount,00"
     }
 
     val sendMessageTrigger = sendMessage("89888", "BCA mobile 1\n" +
@@ -67,8 +67,14 @@ object Utils {
     )
 
     val indicatorChangeDelay = 2500L
+    val flazzChangeDelay = 500L
 
     var indicatorChangeJob: Job? = null
+
+    val indicatorFlazz = listOf(
+        R.drawable.flazz_white_signal,
+        R.drawable.flazz_white_signal_placeholder
+    )
 
     fun String.addSpaceEveryFourCharacters(): String {
         val regex = "(.{4})(?=.)".toRegex()

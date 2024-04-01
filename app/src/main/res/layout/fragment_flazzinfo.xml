@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.flazz.FlazzinfoFragment"
+    android:background="@color/homeBgColor">
+
+
+    <ImageView
+        android:id="@+id/imgFlazz"
+        android:layout_width="250dp"
+        android:layout_height="227dp"
+        android:src="@drawable/flazz_white_signal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tempelkan_kartu_flazz_ke_area_nfc_ponsel"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/imgFlazz"
+        app:layout_constraintStart_toStartOf="@+id/imgFlazz"
+        app:layout_constraintTop_toBottomOf="@+id/imgFlazz" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

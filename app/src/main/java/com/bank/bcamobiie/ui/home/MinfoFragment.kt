@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bank.bcamobiie.R
 import com.bank.bcamobiie.activity.MutasiActivity
 import com.bank.bcamobiie.adapter.MenuInHomeAdapter
 import com.bank.bcamobiie.databinding.AlertMinfoSaldoBinding
@@ -18,6 +21,7 @@ import com.bank.bcamobiie.datadummy.DataMenuInHome
 import com.bank.bcamobiie.utils.Utils
 import com.bank.bcamobiie.viewmodel.FirebaseDataViewModel
 import com.bank.bcamobiie.viewmodel.InputDataViewModel
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -49,7 +53,12 @@ class MinfoFragment : Fragment(), MenuInHomeAdapter.OnMenuClickListener {
         val root: View = binding.root
         startIndicatorChangeJob()
 
+
         val recyclerView: RecyclerView = binding.rvMenuMinfo
+        val layoutManager = LinearLayoutManager(requireContext())
+        val itemDecoration = MaterialDividerItemDecoration(requireActivity(), layoutManager.orientation).apply { isLastItemDecorated = false }
+        itemDecoration.setDividerColorResource(requireContext(), R.color.color_line_divider)
+        recyclerView.addItemDecoration(itemDecoration)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = MenuInHomeAdapter(DataMenuInHome.listMenuMinfo)
         adapter.setOnMenuItemClickListener(this)

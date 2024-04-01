@@ -11,6 +11,7 @@ import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.ImageView
@@ -170,7 +171,9 @@ class WelcomeActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
-        dialog.window?.setLayout(900, 600)
+        val width = (resources.displayMetrics.widthPixels * 0.80).toInt()
+        val height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.setLayout(width, height)
         alertAccesPin.apply {
             btnCancelAcces.setOnClickListener {
                 dialog.dismiss()
