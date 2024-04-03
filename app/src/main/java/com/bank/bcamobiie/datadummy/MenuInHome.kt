@@ -39,7 +39,7 @@ object DataMenuInHome {
         MenuInHome(1, menuName = "Kartu Kredit / Paylater BCA"),
         MenuInHome(2, menuName = "Handphone"),
         MenuInHome(3, menuName = "Telephone"),
-        MenuInHome(4, menuName = "Publik ? Utilitas"),
+        MenuInHome(4, menuName = "Publik / Utilitas"),
         MenuInHome(5, menuName = "BPJS"),
         MenuInHome(6, menuName = "Pajak"),
         MenuInHome(7, menuName = "Asuransi"),

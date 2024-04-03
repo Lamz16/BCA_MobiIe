@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="320dp"
-    android:layout_height="400dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/bgalertlogout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@drawable/bglightgray"
         android:layout_margin="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,27 +44,29 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="190dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/bgalertlogout"
         app:layout_constraintEnd_toEndOf="@+id/bgalertlogout"
-        app:layout_constraintStart_toStartOf="@+id/bgalertlogout" >
+        app:layout_constraintStart_toStartOf="@+id/bgalertlogout"
+        app:layout_constraintTop_toBottomOf="@+id/messageLogout">
 
         <ImageButton
             android:id="@+id/btnCancelLogout"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_marginEnd="6dp"
-            android:background="@drawable/clickcancelalertlog"/>
+            android:background="@drawable/clickcancelalertlog" />
 
         <ImageButton
             android:id="@+id/btnLogout"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_marginStart="6dp"
-            android:background="@drawable/clicklogout"/>
+            android:background="@drawable/clicklogout" />
 
     </LinearLayout>
 

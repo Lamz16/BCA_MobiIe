@@ -10,6 +10,7 @@ import android.net.Uri
 import android.nfc.NfcAdapter
 import android.os.Bundle
 import android.provider.Settings
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -171,7 +172,18 @@ class WelcomeActivity : AppCompatActivity() {
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
         dialog.show()
-        val width = (resources.displayMetrics.widthPixels * 0.80).toInt()
+        val dpiCategory = resources.configuration.densityDpi
+        val widthMultiplier = when (dpiCategory) {
+            DisplayMetrics.DENSITY_MEDIUM -> 0.80 // mdpi
+            DisplayMetrics.DENSITY_HIGH -> 0.70   // hdpi
+            DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)
+            DisplayMetrics.DENSITY_XXHIGH -> 0.90  // xxhdpi (90%)
+            DisplayMetrics.DENSITY_XXXHIGH -> 0.90 // xxxhdpi (90%)
+            else -> 0.80
+        }
+        val displayMetrics = resources.displayMetrics
+        val width = (displayMetrics.widthPixels * widthMultiplier).toInt()
+
         val height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog.window?.setLayout(width, height)
         alertAccesPin.apply {

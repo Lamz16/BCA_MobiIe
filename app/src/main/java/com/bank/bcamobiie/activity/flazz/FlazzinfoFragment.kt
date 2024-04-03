@@ -42,14 +42,14 @@ class FlazzinfoFragment : Fragment() {
     private fun startAnimationChangeJob() {
         indicatorChangeJob?.cancel()
 
-        var currentIndex = 0 // Indeks gambar saat ini
+        var currentIndex = 0
 
         indicatorChangeJob = lifecycleScope.launch {
             while (isActive) {
-                // Tampilkan gambar sesuai dengan indeks saat ini
+
                 binding.imgFlazz.setImageResource(indicatorImages[currentIndex])
 
-                // Pindah ke gambar berikutnya
+
                 currentIndex = (currentIndex + 1) % indicatorImages.size
 
                 delay(indicatorChangeDelay)

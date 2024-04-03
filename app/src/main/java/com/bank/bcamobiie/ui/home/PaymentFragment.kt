@@ -62,7 +62,7 @@ class PaymentFragment : Fragment(), MenuInHomeAdapter.OnMenuClickListener {
 
     override fun onItemClick(menuId: Int) {
         when (menuId) {
-            1 -> Toast.makeText(requireContext(), "Ini Menu 1", Toast.LENGTH_SHORT).show()
+            
         }
     }
 

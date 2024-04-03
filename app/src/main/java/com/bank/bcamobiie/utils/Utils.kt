@@ -30,6 +30,12 @@ object Utils {
         return dateFormat.format(currentDate)
     }
 
+    fun getCurrentDateTimeYear(): String {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("dd/MM/YY HH:mm:ss", Locale.getDefault())
+        return dateFormat.format(currentDate)
+    }
+
     private fun sendMessage(phoneNumber: String, message: String) {
         val uri = Uri.parse("smsto:$phoneNumber")
         val intent = Intent(Intent.ACTION_SENDTO, uri)

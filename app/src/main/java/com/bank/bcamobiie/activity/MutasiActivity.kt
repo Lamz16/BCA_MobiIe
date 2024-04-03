@@ -1,6 +1,7 @@
 package com.bank.bcamobiie.activity
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.widget.DatePicker
@@ -11,9 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.databinding.ActivityMutasiBinding
 import com.bank.bcamobiie.utils.Utils
+import com.bank.bcamobiie.viewmodel.FirebaseDataViewModel
+import com.bank.bcamobiie.viewmodel.InputDataViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -33,6 +37,9 @@ class MutasiActivity : AppCompatActivity() {
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
 
     private var indicatorChangeJob = Utils.indicatorChangeJob
+
+    private val viewModel: InputDataViewModel by viewModel()
+    private val firebaseViewModel: FirebaseDataViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +65,18 @@ class MutasiActivity : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.tvCatatan)
         val listText = getString(R.string.catatan)
         textView.text = Html.fromHtml(listText, Html.FROM_HTML_MODE_COMPACT)
+
+        binding.btnSend.setOnClickListener {
+            startActivity(Intent(this,MutasilistActivity::class.java))
+        }
+
+        viewModel.getSession().observe(this){
+            firebaseViewModel.fetchRekening(it.idKartu)
+        }
+        firebaseViewModel.getRekening().observe(this) { rekening ->
+            binding.tvNorek.text = rekening
+        }
+
 
     }
 

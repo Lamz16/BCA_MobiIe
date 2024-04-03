@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAkunsaya"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/straightline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTagAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensanssemibold"
+        android:text="@string/akun_saya"
+        android:textColor="@color/blue_text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/indicatorSignalMyAcc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/indicatorSignalMyAcc" />
+
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:visibility="invisible"
+        android:background="@drawable/clicknavlogout"/>
+
+    <ImageView
+        android:id="@+id/indicatorSignalMyAcc"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintTop_toTopOf="@id/btnLogout"
+        app:layout_constraintEnd_toStartOf="@id/btnLogout"
+        app:layout_constraintBottom_toBottomOf="@id/btnLogout"
+        android:src="@drawable/navconngreen"
+        android:layout_marginEnd="24dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarAkunsaya">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/opensanssemibold"
+            android:text="Jenis Kartu"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@+id/bcaCard"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/opensansbold"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/bcaCard"
+            app:layout_constraintStart_toStartOf="@+id/bcaCard"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <ImageView
+            android:id="@+id/bcaCard"
+            android:layout_width="344dp"
+            android:layout_height="245dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/tvNameNasabah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensansbold"
+            android:textSize="19sp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="@id/bcaCard"
+            app:layout_constraintBottom_toBottomOf="@id/bcaCard"
+            app:layout_constraintEnd_toEndOf="@id/bcaCard"/>
+
+        <ImageButton
+            android:id="@+id/btnSeeDetailCard"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/btnseedetailcard"
+            app:layout_constraintEnd_toEndOf="@id/bcaCard"
+            app:layout_constraintStart_toStartOf="@id/bcaCard"
+            app:layout_constraintTop_toBottomOf="@id/bcaCard" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensanssemibold"
+            android:text="@string/lihat_detail_kartu"
+            android:textColor="@color/blue_text_color"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSeeDetailCard"
+            app:layout_constraintEnd_toEndOf="@+id/btnSeeDetailCard"
+            app:layout_constraintStart_toStartOf="@+id/btnSeeDetailCard"
+            app:layout_constraintTop_toTopOf="@+id/btnSeeDetailCard" />
+
+
+        <Toolbar
+            android:id="@+id/toolbarAkunsaya2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bgcardnumber"
+            app:layout_constraintEnd_toEndOf="@+id/btnSeeDetailCard"
+            app:layout_constraintStart_toStartOf="@+id/btnSeeDetailCard"
+            app:layout_constraintTop_toBottomOf="@+id/btnSeeDetailCard" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvNomorKartu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:text="@string/nomor_kartu"
+                    android:textColor="@color/blue_text_color"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvNomor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/opensanssemibold"
+                    android:textColor="@color/color_text_black_zeplin2"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnCopy"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/clickcopyclipboard"
+                android:layout_gravity="end"/>
+
+        </Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rxMenuAkunsaya"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbarAkunsaya2"
+            app:layout_constraintStart_toStartOf="@id/toolbarAkunsaya2"
+            app:layout_constraintEnd_toEndOf="@id/toolbarAkunsaya2"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

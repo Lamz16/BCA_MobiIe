@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MutasiActivity"
-    android:background="@color/colorGrayDarker2">
+    android:background="@color/colorGrayDarker2"
+    tools:context=".activity.MutasiActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarMutasi"
@@ -34,42 +34,34 @@
         android:id="@+id/btnSend"
         android:layout_width="60dp"
         android:layout_height="35dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarMutasi"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/clicksendtopbar"/>
+        android:background="@drawable/clicksendtopbar"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarMutasi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/indicatorSignalMutasi"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        app:layout_constraintTop_toTopOf="@id/btnSend"
-        app:layout_constraintEnd_toStartOf="@id/btnSend"
-        app:layout_constraintBottom_toBottomOf="@id/btnSend"
+        android:layout_marginEnd="4dp"
         android:src="@drawable/navconngreen"
-        android:layout_marginEnd="4dp" />
+        app:layout_constraintBottom_toBottomOf="@id/btnSend"
+        app:layout_constraintEnd_toStartOf="@id/btnSend"
+        app:layout_constraintTop_toTopOf="@id/btnSend" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/divider_menu_item"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarMutasi">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="440dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/bgmutasi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView11"
@@ -79,27 +71,28 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/opensansbold"
             android:text="Nomor Rekening:"
-            android:textColor="@color/blue_text_color"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            android:textColor="@color/blue_text_color" />
 
         <TextView
             android:id="@+id/tvNorek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensanssemibold"
-            android:layout_marginTop="2dp"
-            android:text="6976685054"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/opensanssemibold" android:text="6976685054" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/border" />
 
         <View
             android:id="@+id/batas1"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
             android:layout_marginTop="6dp"
+            android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@id/tvNorek" />
@@ -112,41 +105,42 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/opensansbold"
             android:text="Jenis Transaksi"
-            android:textColor="@color/blue_text_color"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/batas1" />
+            android:textColor="@color/blue_text_color" />
 
-        <TextView
-            android:id="@+id/opsiMutasi"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensanssemibold"
-            android:text="Semua"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:src="@drawable/icon_arrow_blue"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toBottomOf="@id/textView12"
-            app:layout_constraintBottom_toTopOf="@id/opsiMutasi"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2" />
+            <TextView
+                android:id="@+id/opsiMutasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/opensanssemibold"
+                android:text="Semua"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/icon_arrow_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
-            android:id="@+id/batas2"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginTop="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@id/opsiMutasi" />
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/border" />
 
         <TextView
             android:id="@+id/textView13"
@@ -156,9 +150,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/opensansbold"
             android:text="Periode Mutasi"
-            android:textColor="@color/blue_text_color"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/batas2" />
+            android:textColor="@color/blue_text_color" />
 
         <TextView
             android:id="@+id/textView14"
@@ -168,25 +160,23 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/opensansbold"
             android:text="Dari Tanggal:"
-            android:textColor="@color/blue_text_color"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            android:textColor="@color/blue_text_color" />
 
         <EditText
             android:id="@+id/dateDari"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             style="@style/MyEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:focusable="false"
-            android:textColor="@color/blue_text_color"
             android:fontFamily="@font/opensansbold"
-            android:textSize="12sp"
             android:inputType="none"
             android:onClick="showDatePickerDialog"
             android:text="Select Date"
+            android:textColor="@color/blue_text_color"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -200,45 +190,39 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/opensansbold"
             android:text="Sampai Tanggal:"
-            android:textColor="@color/blue_text_color"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/dateDari" />
+            android:textColor="@color/blue_text_color" />
 
 
         <EditText
             android:id="@+id/dateSampai"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             style="@style/MyEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:focusable="false"
-            android:textColor="@color/blue_text_color"
             android:fontFamily="@font/opensansbold"
-            android:textSize="12sp"
             android:inputType="none"
             android:onClick="showDatePickerDialogTwo"
             android:text="Select Date"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            android:textColor="@color/blue_text_color"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvCatatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/opensanssemibold"
-            android:textSize="12sp"
-            android:textColor="@color/red"
-            android:text="catatan"
-            android:layout_marginTop="48dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/dateSampai"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/opensanssemibold"
+            android:text="catatan"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -89,5 +89,7 @@
     <string name="gold">Paspor BCA Gold</string>
     <string name="blue">Paspor BCA Blue</string>
     <string name="platinum">Paspor BCA Platinum</string>
+    <string name="semua">Semua</string>
+    <string name="cari_mutasi">Cari Mutasi</string>
 
 </resources>

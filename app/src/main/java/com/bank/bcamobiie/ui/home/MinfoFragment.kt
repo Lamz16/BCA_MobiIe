@@ -2,9 +2,11 @@ package com.bank.bcamobiie.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -99,7 +101,20 @@ class MinfoFragment : Fragment(), MenuInHomeAdapter.OnMenuClickListener {
         alertBuilder.setView(view)
         val dialog = alertBuilder.create()
         dialog.show()
-        dialog.window?.setLayout(900, 1050)
+        val dpiCategory = resources.configuration.densityDpi
+        val widthMultiplier = when (dpiCategory) {
+            DisplayMetrics.DENSITY_MEDIUM -> 0.75 // mdpi
+            DisplayMetrics.DENSITY_HIGH -> 0.78   // hdpi
+            DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)
+            DisplayMetrics.DENSITY_XXHIGH -> 0.86  // xxhdpi (90%)
+            DisplayMetrics.DENSITY_XXXHIGH -> 0.90 // xxxhdpi (90%)
+            else -> 0.77
+        }
+        val displayMetrics = resources.displayMetrics
+        val width = (displayMetrics.widthPixels * widthMultiplier).toInt()
+
+        val height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.setLayout(width, height)
 
         alertSaldo.tvDateSaldo.text = Utils.getCurrentDateTime()
         viewModel.getSession().observe(viewLifecycleOwner){

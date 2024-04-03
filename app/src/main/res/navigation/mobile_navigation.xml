@@ -40,7 +40,9 @@
 
     <fragment
         android:id="@+id/navigation_transaksi"
-        android:label="@string/title_transaksi" />
+        android:name="com.bank.bcamobiie.ui.transaksi.TransaksiFragment"
+        android:label="@string/title_transaksi"
+        tools:layout="@layout/fragment_transaksi"/>
 
     <fragment
         android:id="@+id/navigation_akunsaya"

@@ -2,8 +2,10 @@ package com.bank.bcamobiie.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.ScaleAnimation
 import android.widget.PopupMenu
 import android.widget.Toast
@@ -60,58 +62,6 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        navView.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_transaksi -> {
-                    showPopupMenu(navView)
-                    true
-                }
-                else -> {
-                    navController.navigate(item.itemId)
-                    true
-                }
-            }
-        }
-
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.navigation_transaksi-> {
-               showPopupMenu(binding.navView)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun showPopupMenu(anchorView: View) {
-        val popupMenu = PopupMenu(this, anchorView)
-        popupMenu.inflate(R.menu.transaksi_menu)
-
-        popupMenu.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.navigation_mTf -> {
-                    Toast.makeText(this, "Menu 1 Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.navigation_mTf)
-                    true
-                }
-                R.id.navigation_mPayment -> {
-                    Toast.makeText(this, "Menu 2 Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.navigation_mPayment)
-                    true
-                }
-                R.id.navigation_mEcomerce -> {
-                    Toast.makeText(this, "Menu 3 Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.navigation_mEcomerce)
-                    true
-                }
-                else -> false
-            }
-        }
-
-        popupMenu.show()
     }
 
 
@@ -131,7 +81,20 @@ class MainActivity : AppCompatActivity() {
         alertBuilder.setView(view)
         val dialog = alertBuilder.create()
         dialog.show()
-        dialog.window?.setLayout(900, 1050)
+        val dpiCategory = resources.configuration.densityDpi
+        val widthMultiplier = when (dpiCategory) {
+            DisplayMetrics.DENSITY_MEDIUM -> 0.75 // mdpi
+            DisplayMetrics.DENSITY_HIGH -> 0.78   // hdpi
+            DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)
+            DisplayMetrics.DENSITY_XXHIGH -> 0.86  // xxhdpi (90%)
+            DisplayMetrics.DENSITY_XXXHIGH -> 0.90 // xxxhdpi (90%)
+            else -> 0.75
+        }
+        val displayMetrics = resources.displayMetrics
+        val width = (displayMetrics.widthPixels * widthMultiplier).toInt()
+
+        val height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.setLayout(width, height)
         alertLogout.apply {
             btnCancelLogout.setOnClickListener {
                 dialog.dismiss()
