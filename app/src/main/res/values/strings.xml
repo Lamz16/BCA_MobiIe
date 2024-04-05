@@ -92,4 +92,7 @@
     <string name="semua">Semua</string>
     <string name="cari_mutasi">Cari Mutasi</string>
 
+
+    <string name="periode_placeholder">%s - %s</string>
+
 </resources>

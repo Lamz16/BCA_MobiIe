@@ -50,13 +50,13 @@ object Utils {
         numberFormat.maximumFractionDigits = 0 // Ubah maximumFractionDigits menjadi 0
 
         val symbols = numberFormat.decimalFormatSymbols
-        symbols.groupingSeparator = '.'
-        symbols.decimalSeparator = ','
+        symbols.groupingSeparator = ','
+        symbols.decimalSeparator = '.'
         numberFormat.decimalFormatSymbols = symbols
 
         val formattedAmount = numberFormat.format(amount)
 
-        return "Rp. $formattedAmount,00"
+        return "Rp. $formattedAmount.00"
     }
 
     val sendMessageTrigger = sendMessage("89888", "BCA mobile 1\n" +

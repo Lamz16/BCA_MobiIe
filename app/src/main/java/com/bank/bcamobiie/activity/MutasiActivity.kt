@@ -2,12 +2,21 @@ package com.bank.bcamobiie.activity
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Html
+import android.util.TypedValue
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.databinding.ActivityMutasiBinding
@@ -37,6 +46,7 @@ class MutasiActivity : AppCompatActivity() {
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
 
     private var indicatorChangeJob = Utils.indicatorChangeJob
+    private var jenisTran : String = ""
 
     private val viewModel: InputDataViewModel by viewModel()
     private val firebaseViewModel: FirebaseDataViewModel by viewModel()
@@ -51,6 +61,63 @@ class MutasiActivity : AppCompatActivity() {
         editTextDateSampai = binding.dateSampai
 
         startIndicatorChangeJob()
+
+        jenisTran= "Semua"
+
+        binding.opsiMutasi.setOnClickListener {
+            val options = arrayOf("Semua", "Uang Masuk", "Uang Keluar")
+
+            val adapter = object : ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                options
+            ) {
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getView(position, convertView, parent)
+                    val textView = view.findViewById<TextView>(android.R.id.text1)
+                    textView.text = options[position]
+                    textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
+
+                    val paddingInDp = TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        16f,
+                        resources.displayMetrics
+                    ).toInt()
+                    textView.setPadding(paddingInDp, 8, paddingInDp, 8)
+
+                    val textColor = ContextCompat.getColorStateList(this@MutasiActivity, R.color.text_alert_selector)
+                    textView.setTextColor(textColor)
+                    textView.background = ContextCompat.getDrawable(this@MutasiActivity, R.drawable.list_item_selector)
+
+                    return view
+                }
+            }
+
+            val builder = AlertDialog.Builder(this)
+
+            builder.setAdapter(adapter) { dialog, which ->
+                val selectedOption = options[which]
+                binding.opsiMutasi.text = selectedOption
+                jenisTran = selectedOption
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+
+            dialog.show()
+
+            // Set divider
+            dialog.listView.divider = ColorDrawable(ContextCompat.getColor(this, R.color.line_alert))
+            dialog.listView.dividerHeight = resources.getDimensionPixelSize(R.dimen.divider_height)
+
+            val paddingInDp = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                48f,
+                resources.displayMetrics
+            ).toInt()
+            dialog.listView.setPadding(paddingInDp, 0, paddingInDp, 0)
+        }
 
         setInitialDates()
 
@@ -67,7 +134,28 @@ class MutasiActivity : AppCompatActivity() {
         textView.text = Html.fromHtml(listText, Html.FROM_HTML_MODE_COMPACT)
 
         binding.btnSend.setOnClickListener {
-            startActivity(Intent(this,MutasilistActivity::class.java))
+            val diffInMillis = calendarSampai.timeInMillis - calendarDari.timeInMillis
+
+            val diffInDays = diffInMillis / (1000 * 60 * 60 * 24)
+
+
+            if (diffInDays > 7) {
+                // Menampilkan pesan toast
+                Toast.makeText(this, "Periode maksimal adalah 7 hari", Toast.LENGTH_SHORT).show()
+            } else {
+
+                // Format tanggal dari dan tanggal sampai
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val fromDate = dateFormat.format(calendarDari.time)
+                val toDate = dateFormat.format(calendarSampai.time)
+
+                // Membuat intent dan mengirimkan data tanggal
+                val intent = Intent(this, MutasilistActivity::class.java)
+                intent.putExtra(MutasilistActivity.DATA_MUTASI, jenisTran)
+                intent.putExtra(MutasilistActivity.DATE_FROM, fromDate)
+                intent.putExtra(MutasilistActivity.DATE_TO, toDate)
+                startActivity(intent)
+            }
         }
 
         viewModel.getSession().observe(this){
@@ -91,7 +179,7 @@ class MutasiActivity : AppCompatActivity() {
 
         indicatorChangeJob = lifecycleScope.launch {
             while (isActive) {
-                val randomIndex = (0 until indicatorImages.size).random()
+                val randomIndex = (indicatorImages.indices).random()
                 binding.indicatorSignalMutasi.setImageResource(indicatorImages[randomIndex])
                 delay(indicatorChangeDelay)
             }

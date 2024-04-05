@@ -12,6 +12,7 @@
     <color name="black2">#171717</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#005FAF</color>
+    <color name="blue2">#2196F3</color>
     <color name="blue_text_color">#0c5ea9</color>
     <color name="colorGrayDarker">#919191</color>
     <color name="colorGrayDarker2">#DADADA</color>
@@ -19,6 +20,7 @@
     <color name="color_text_black_zeplin">#4f4f4f</color>
     <color name="color_text_black_zeplin2">#939393</color>
     <color name="color_line_divider">#124E4E4E</color>
+    <color name="color_line_divider2">#954E4E4E</color>
     <color name="navigation_bottom">#F1EFEF</color>
     <color name="navigation_bottom2">#FAF8F8</color>
     <color name="navigation_top">#F6F3F3</color>
@@ -26,4 +28,7 @@
     <color name="color_bg_card_number">#f0eeee</color>
     <color name="brown_bg_title_menu">#555555</color>
     <color name="red">#ed0621</color>
+    <color name="yellow">#febc28</color>
+    <color name="text_alert">#bebebe</color>
+    <color name="line_alert">#6A6969</color>
 </resources>

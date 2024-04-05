@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    android:id="@+id/cardMutasi">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tgl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tgl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:paddingTop="12dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/keterangan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="keterangan"
+            android:textSize="15sp"
+            android:textColor="@color/color_text_black_zeplin"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tgl" />
+
+        <TextView
+            android:id="@+id/layanan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="layanan"
+            android:textSize="15sp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/color_text_black_zeplin"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/keterangan" />
+
+        <TextView
+            android:id="@+id/nominal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Rp. 100.000"
+            android:paddingTop="12dp"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/jenisTrans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="DB"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/nominal"
+            android:layout_marginTop="8dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
