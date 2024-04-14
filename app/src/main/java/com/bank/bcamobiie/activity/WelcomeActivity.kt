@@ -175,11 +175,11 @@ class WelcomeActivity : AppCompatActivity() {
         val dpiCategory = resources.configuration.densityDpi
         val widthMultiplier = when (dpiCategory) {
             DisplayMetrics.DENSITY_MEDIUM -> 0.80 // mdpi
-            DisplayMetrics.DENSITY_HIGH -> 0.70   // hdpi
-            DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)
+            DisplayMetrics.DENSITY_HIGH -> 0.75   // hdpi
+            DisplayMetrics.DENSITY_XHIGH -> 0.85  // xhdpi (80%)
             DisplayMetrics.DENSITY_XXHIGH -> 0.90  // xxhdpi (90%)
             DisplayMetrics.DENSITY_XXXHIGH -> 0.90 // xxxhdpi (90%)
-            else -> 0.80
+            else -> 0.78
         }
         val displayMetrics = resources.displayMetrics
         val width = (displayMetrics.widthPixels * widthMultiplier).toInt()

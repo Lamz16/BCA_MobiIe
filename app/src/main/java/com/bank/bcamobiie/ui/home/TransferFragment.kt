@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bank.bcamobiie.R
+import com.bank.bcamobiie.activity.AntarbankActivity
 import com.bank.bcamobiie.activity.AntarrekeningActivity
 import com.bank.bcamobiie.adapter.MenuInHomeAdapter
 import com.bank.bcamobiie.databinding.FragmentTransferBinding
@@ -63,6 +64,7 @@ class TransferFragment : Fragment() , MenuInHomeAdapter.OnMenuClickListener {
     override fun onItemClick(menuId: Int) {
         when (menuId) {
             1 -> startActivity(Intent(requireContext(), AntarrekeningActivity::class.java))
+            2 -> startActivity(Intent(requireContext(), AntarbankActivity::class.java))
         }
     }
 

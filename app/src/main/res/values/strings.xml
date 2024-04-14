@@ -94,5 +94,6 @@
 
 
     <string name="periode_placeholder">%s - %s</string>
+    <string name="periode_mutasi_yang_dapat_dipilih_7_hari">Periode mutasi yang dapat dipilih 7 hari.</string>
 
 </resources>

@@ -20,6 +20,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.databinding.ActivityMutasiBinding
+import com.bank.bcamobiie.databinding.AlertPeriodeSevenBinding
+import com.bank.bcamobiie.databinding.AlertWrongCodeAccesBinding
 import com.bank.bcamobiie.utils.Utils
 import com.bank.bcamobiie.viewmodel.FirebaseDataViewModel
 import com.bank.bcamobiie.viewmodel.InputDataViewModel
@@ -35,19 +37,16 @@ class MutasiActivity : AppCompatActivity() {
 
     private var _binding : ActivityMutasiBinding? = null
     private val binding get() = _binding!!
-
+    private var _alertWrong: AlertPeriodeSevenBinding? = null
+    private val alertWrong: AlertPeriodeSevenBinding get() = _alertWrong!!
     private lateinit var editTextDateDari: EditText
     private lateinit var editTextDateSampai: EditText
     private val calendarDari = Calendar.getInstance()
     private val calendarSampai = Calendar.getInstance()
-
     private val indicatorImages = Utils.indicatorImages
-
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
-
     private var indicatorChangeJob = Utils.indicatorChangeJob
     private var jenisTran : String = ""
-
     private val viewModel: InputDataViewModel by viewModel()
     private val firebaseViewModel: FirebaseDataViewModel by viewModel()
 
@@ -140,8 +139,7 @@ class MutasiActivity : AppCompatActivity() {
 
 
             if (diffInDays > 7) {
-                // Menampilkan pesan toast
-                Toast.makeText(this, "Periode maksimal adalah 7 hari", Toast.LENGTH_SHORT).show()
+               showAlert()
             } else {
 
                 // Format tanggal dari dan tanggal sampai
@@ -223,4 +221,21 @@ class MutasiActivity : AppCompatActivity() {
         )
         datePickerDialog.show()
     }
+
+    private fun showAlert()  {
+        val alertBuilder = AlertDialog.Builder(this)
+        _alertWrong = AlertPeriodeSevenBinding.inflate(layoutInflater)
+        val view = alertWrong.root
+        alertBuilder.setView(view)
+        val dialog = alertBuilder.create()
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
+        dialog.window?.setLayout(850, 1000)
+        alertWrong.apply {
+            btnOkInccoreCode.setOnClickListener {
+                dialog.dismiss()
+            }
+        }
+    }
+
 }

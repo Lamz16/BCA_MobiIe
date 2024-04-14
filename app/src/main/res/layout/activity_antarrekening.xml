@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.AntarrekeningActivity"
-    android:background="@drawable/bggraybig">
+    android:background="@drawable/bgslash">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarTfArek"
@@ -54,11 +54,11 @@
         android:id="@+id/tvNotujuan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/opensansbold"
-        android:text="Nomor Rekening Tujuan"
+        android:text="No. Rekening Tujuan"
         android:textColor="@color/blue_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarTfArek"/>
@@ -67,8 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/divider_menu_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +83,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
+            android:padding="4dp"
             android:hint="Rekening 1"
             android:drawableEnd="@drawable/ic_arrow"
             android:inputType="number"
@@ -105,6 +106,7 @@
             android:maxLength="10"
             android:textSize="17sp"
             android:hint="Rekening 2"
+            android:padding="4dp"
             android:layout_marginTop="8dp"
             android:drawableEnd="@drawable/ic_arrow"
             android:inputType="number"
@@ -123,6 +125,7 @@
             android:maxLength="10"
             android:textSize="17sp"
             android:hint="Rekening 3"
+            android:padding="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"

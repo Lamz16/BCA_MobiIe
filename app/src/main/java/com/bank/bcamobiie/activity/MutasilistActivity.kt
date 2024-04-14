@@ -31,13 +31,10 @@ import java.util.Locale
 
 class MutasilistActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMutasilistBinding
+    private lateinit var binding: ActivityMutasilistBinding
     private val indicatorImages = Utils.indicatorImages
-
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
-
     private var indicatorChangeJob = Utils.indicatorChangeJob
-
     private val viewModel: InputDataViewModel by viewModel()
     private val firebaseViewModel: FirebaseDataViewModel by viewModel()
     private lateinit var database: DatabaseReference
@@ -50,12 +47,16 @@ class MutasilistActivity : AppCompatActivity() {
         supportActionBar?.hide()
         startIndicatorChangeJob()
         initialRek()
-        database = FirebaseDatabase.getInstance("https://bca-mobiile-default-rtdb.firebaseio.com/").reference
+        database =
+            FirebaseDatabase.getInstance("https://bca-mobiile-default-rtdb.firebaseio.com/").reference
 
         adapter = MutasiAdapter(emptyList())
         binding.rvMutasi.layoutManager = LinearLayoutManager(this)
         val layoutManager = LinearLayoutManager(this)
-        val itemDecoration = MaterialDividerItemDecoration(this, layoutManager.orientation).apply { isLastItemDecorated = false }
+        val itemDecoration = MaterialDividerItemDecoration(
+            this,
+            layoutManager.orientation
+        ).apply { isLastItemDecorated = false }
         itemDecoration.setDividerColorResource(this, R.color.color_line_divider2)
         binding.rvMutasi.addItemDecoration(itemDecoration)
         binding.rvMutasi.adapter = adapter
@@ -63,8 +64,8 @@ class MutasilistActivity : AppCompatActivity() {
 
     }
 
-    private fun initialRek(){
-        viewModel.getSession().observe(this){
+    private fun initialRek() {
+        viewModel.getSession().observe(this) {
             firebaseViewModel.fetchRekening(it.idKartu)
         }
 
@@ -105,12 +106,13 @@ class MutasilistActivity : AppCompatActivity() {
         val timeFrom = intent.getStringExtra(DATE_FROM)
         val timeTo = intent.getStringExtra(DATE_TO)
 
-        viewModel.getSession().observe(this){
+        viewModel.getSession().observe(this) {
             firebaseViewModel.fetchRekening(it.idKartu)
         }
 
         firebaseViewModel.getRekening().observe(this) { idRekening ->
-            val queryRef = database.child("data_transaksi").orderByChild("idRekening").equalTo(idRekening)
+            val queryRef =
+                database.child("data_transaksi").orderByChild("idRekening").equalTo(idRekening)
             queryRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     filteredTransactions.clear() // Clear the list before filtering
@@ -129,11 +131,13 @@ class MutasilistActivity : AppCompatActivity() {
                                             filteredTransactions.add(it)
                                         }
                                     }
+
                                     "Uang Keluar" -> {
                                         if (it.jenisTran == "DB" && it.contains(query)) {
                                             filteredTransactions.add(it)
                                         }
                                     }
+
                                     else -> {
                                         if (it.contains(query)) {
                                             filteredTransactions.add(it)
@@ -160,11 +164,12 @@ class MutasilistActivity : AppCompatActivity() {
         val timeFrom = intent.getStringExtra(DATE_FROM)
         val timeTo = intent.getStringExtra(DATE_TO)
 
-        viewModel.getSession().observe(this){
+        viewModel.getSession().observe(this) {
             firebaseViewModel.fetchRekening(it.idKartu)
         }
         firebaseViewModel.getRekening().observe(this) { idRekening ->
-            val query = database.child("data_transaksi").orderByChild("idRekening").equalTo(idRekening)
+            val query =
+                database.child("data_transaksi").orderByChild("idRekening").equalTo(idRekening)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val transactions = mutableListOf<DataTransaksi>()
@@ -186,11 +191,13 @@ class MutasilistActivity : AppCompatActivity() {
                                             transactions.add(it)
                                         }
                                     }
+
                                     "Uang Keluar" -> {
                                         if (it.jenisTran == "DB") {
                                             transactions.add(it)
                                         }
                                     }
+
                                     else -> transactions.add(it)
                                 }
                             }
@@ -220,23 +227,28 @@ class MutasilistActivity : AppCompatActivity() {
     private fun isDateWithinRange(date: Date, startDate: Date, endDate: Date): Boolean {
 
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
-        val formattedStartDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startDate)
-        val formattedEndDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(endDate)
+        val formattedStartDateString =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(startDate)
+        val formattedEndDateString =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(endDate)
         val formattedDateString = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(date)
         val formattedStartDateWithYear = "$formattedStartDateString/$currentYear"
         val formattedEndDateWithYear = "$formattedEndDateString/$currentYear"
         val formattedDateWithYear = "$formattedDateString/$currentYear"
 
 
-        val startDateWithYear = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedStartDateWithYear) ?: startDate
-        val endDateWithYear = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedEndDateWithYear) ?: endDate
-        val dateWithYear = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedDateWithYear) ?: date
+        val startDateWithYear =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedStartDateWithYear)
+                ?: startDate
+        val endDateWithYear =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedEndDateWithYear)
+                ?: endDate
+        val dateWithYear =
+            SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(formattedDateWithYear) ?: date
 
 
         return dateWithYear in startDateWithYear..endDateWithYear
     }
-
-
 
 
     private fun formatAccountNumber(number: String): String {
