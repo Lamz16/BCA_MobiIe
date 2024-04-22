@@ -18,13 +18,17 @@
         android:theme="@style/Theme.BCAMobiIe"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ChoicerekActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TFAntarrekActivity"
+            android:launchMode="singleTop"
+            android:exported="false" />
+        <activity
             android:name=".activity.AntarbankActivity"
             android:exported="false" />
         <activity
             android:name=".activity.DaftarrekActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DaftarRekActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MutasilistActivity"

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.activity.AntarbankActivity
 import com.bank.bcamobiie.activity.AntarrekeningActivity
+import com.bank.bcamobiie.activity.TFAntarrekActivity
 import com.bank.bcamobiie.adapter.MenuInHomeAdapter
 import com.bank.bcamobiie.databinding.FragmentTransferBinding
 import com.bank.bcamobiie.datadummy.DataMenuInHome
@@ -63,8 +64,11 @@ class TransferFragment : Fragment() , MenuInHomeAdapter.OnMenuClickListener {
 
     override fun onItemClick(menuId: Int) {
         when (menuId) {
-            1 -> startActivity(Intent(requireContext(), AntarrekeningActivity::class.java))
+            1 -> {
+                startActivity(Intent(requireContext(), AntarrekeningActivity::class.java))
+            }
             2 -> startActivity(Intent(requireContext(), AntarbankActivity::class.java))
+            3 -> startActivity(Intent(requireContext(), TFAntarrekActivity::class.java))
         }
     }
 
@@ -73,7 +77,7 @@ class TransferFragment : Fragment() , MenuInHomeAdapter.OnMenuClickListener {
 
         indicatorChangeJob = viewLifecycleOwner.lifecycleScope.launch {
             while (isActive) {
-                val randomIndex = (0 until indicatorImages.size).random()
+                val randomIndex = (indicatorImages.indices).random()
                 binding.indicatorSignalMinfo.setImageResource(indicatorImages[randomIndex])
                 delay(indicatorChangeDelay)
             }

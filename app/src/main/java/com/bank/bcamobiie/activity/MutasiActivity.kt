@@ -102,7 +102,7 @@ class MutasiActivity : AppCompatActivity() {
             }
 
             val dialog = builder.create()
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+            dialog.window?.setBackgroundDrawableResource(R.drawable.list_item_outline)
 
             dialog.show()
 

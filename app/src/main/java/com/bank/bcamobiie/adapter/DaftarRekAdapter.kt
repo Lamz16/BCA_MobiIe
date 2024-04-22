@@ -32,9 +32,31 @@ class DaftarRekAdapter(private val daftarRekList: List<DataDaftarRek>) :
         private val atasNama: TextView = itemView.findViewById(R.id.atasNama)
         private val isSelected: ImageView = itemView.findViewById(R.id.isSelected)
 
+        private var currentItem: DataDaftarRek? = null
+
+        init {
+            itemView.setOnClickListener {
+                currentItem?.let {
+                    it.isSelected = !it.isSelected  // Toggle isSelected state
+                    updateSelectedIcon(it.isSelected)
+                }
+            }
+        }
+
         fun bind(daftarRek: DataDaftarRek) {
+            currentItem = daftarRek  // Assign current item
+
             atasRek.text = daftarRek.noRek
             atasNama.text = daftarRek.nama
+            updateSelectedIcon(daftarRek.isSelected)
+        }
+
+        private fun updateSelectedIcon(isSelected: Boolean) {
+            if (isSelected) {
+                this.isSelected.setImageResource(R.drawable.ic_selected)  // Ganti dengan ikon yang sesuai
+            } else {
+                this.isSelected.setImageResource(R.drawable.ic_select)  // Ganti dengan ikon yang sesuai
+            }
         }
     }
 }

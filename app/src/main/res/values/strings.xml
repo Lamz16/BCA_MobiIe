@@ -95,5 +95,8 @@
 
     <string name="periode_placeholder">%s - %s</string>
     <string name="periode_mutasi_yang_dapat_dipilih_7_hari">Periode mutasi yang dapat dipilih 7 hari.</string>
+    <string name="search">Search</string>
+    <string name="rekening_sendiri">Rekening Sendiri</string>
+    <string name="daftar_transfer">Daftar Transfer</string>
 
 </resources>

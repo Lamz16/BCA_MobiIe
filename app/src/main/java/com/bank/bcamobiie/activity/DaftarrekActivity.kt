@@ -1,5 +1,6 @@
 package com.bank.bcamobiie.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.bank.bcamobiie.data.DataAkun
 import com.bank.bcamobiie.data.DataDaftarRek
 import com.bank.bcamobiie.data.DataRekening
 import com.bank.bcamobiie.databinding.ActivityDaftarrekBinding
+import com.bank.bcamobiie.ui.home.TransferFragment
 import com.bank.bcamobiie.utils.Utils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -52,6 +54,13 @@ class DaftarrekActivity : AppCompatActivity() {
 
         fetchData(dataNoRek ?: "")
         Log.d(TAG, "onCreate: $dataNoRek")
+
+        binding.btnSend.setOnClickListener {
+            val intent = Intent(this@DaftarrekActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
+        }
 
     }
 

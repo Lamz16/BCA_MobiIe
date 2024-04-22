@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgslash"
+    tools:context=".activity.ChoicerekActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbTfArek"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:background="@drawable/straightline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAppbarTfArek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/opensanssemibold"
+        android:text="@string/m_transfer"
+        android:textColor="@color/blue_text_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/indicatorSignalArek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/indicatorSignalArek" />
+
+    <ImageButton
+        android:id="@+id/btnSend"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tbTfArek"
+        android:layout_marginEnd="8dp"
+        android:visibility="invisible"
+        android:background="@drawable/clicksendtopbar"/>
+
+    <ImageView
+        android:id="@+id/indicatorSignalArek"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintTop_toTopOf="@id/btnSend"
+        app:layout_constraintEnd_toStartOf="@id/btnSend"
+        app:layout_constraintBottom_toBottomOf="@id/btnSend"
+        android:src="@drawable/navconngreen"
+        android:layout_marginEnd="4dp" />
+
+
+    <LinearLayout
+        android:id="@+id/tbTitleChoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tbTfArek"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <Toolbar
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/tb_gray" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/rekening_sendiri"
+                android:textColor="@android:color/white"/>
+        </Toolbar>
+
+        <Toolbar
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/tb_blue" >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/daftar_transfer"
+                android:textColor="@android:color/white"/>
+        </Toolbar>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/edt_search_choicerek"
+        android:drawableEnd="@drawable/ic_search"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:drawablePadding="24dp"
+        android:hint="@string/search"
+        android:textColor="@color/border"
+        android:textSize="15sp"
+        android:fontFamily="@font/opensanssemibold"
+        app:layout_constraintTop_toBottomOf="@id/tbTitleChoice"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListRek"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        android:layout_margin="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/opensansbold"
-        android:text="No. Rekening Tujuan"
+        android:textSize="14sp"
+        android:text="No.Rekening Tujuan"
         android:textColor="@color/blue_text_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarTfArek"/>
