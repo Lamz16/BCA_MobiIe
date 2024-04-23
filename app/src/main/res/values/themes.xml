@@ -33,6 +33,12 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="MyEditTextStyle3" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/input_edittext_tf</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
     <style name="NoShiftBottomNavigationView" parent="Widget.Design.BottomNavigationView">
         <item name="labelVisibilityMode">labeled</item>
         <item name="itemHorizontalTranslationEnabled">false</item>
