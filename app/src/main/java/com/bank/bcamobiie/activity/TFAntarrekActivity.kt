@@ -4,12 +4,15 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +28,7 @@ import com.bank.bcamobiie.utils.Utils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 
 class TFAntarrekActivity : AppCompatActivity() {
 
@@ -35,6 +39,10 @@ class TFAntarrekActivity : AppCompatActivity() {
 
     private var _alertInputBerita: InputBeritaDialogBinding? = null
     private val alertInputBerita: InputBeritaDialogBinding get() = _alertInputBerita!!
+
+    private lateinit var edtNominalTf : EditText
+    private val decimalFormat = DecimalFormat("#,###")
+    private var isFormatting = false
 
     private val indicatorImages = Utils.indicatorImages
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
@@ -165,11 +173,42 @@ class TFAntarrekActivity : AppCompatActivity() {
 
         val height = WindowManager.LayoutParams.WRAP_CONTENT
         dialog.window?.setLayout(width, height)
+
+        edtNominalTf = alertInputUang.inputNominal
+        edtNominalTf.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (!isFormatting) {
+                    isFormatting = true
+
+                    val text = s.toString()
+                    val cleanString = text.replace(".", "")
+
+                    val formattedText = if (cleanString.isEmpty()) {
+                        ""
+                    } else {
+                        val parsed = cleanString.toDouble()
+                        decimalFormat.format(parsed)
+                    }
+
+                   edtNominalTf.setText(formattedText)
+                    edtNominalTf.setSelection(formattedText.length)
+
+                    isFormatting = false
+                }
+            }
+        })
+
         alertInputUang.cancelBtn.setOnClickListener {
             dialog.dismiss()
         }
         alertInputUang.okBtn.setOnClickListener {
-            val nominal = alertInputUang.inputNominal.text.toString()
+            val nominal = edtNominalTf.text.toString()
             binding.nominalTf.text = nominal
             nominalTf = nominal
             dialog.dismiss()

@@ -98,5 +98,7 @@
     <string name="search">Search</string>
     <string name="rekening_sendiri">Rekening Sendiri</string>
     <string name="daftar_transfer">Daftar Transfer</string>
+    <string name="dari_rekening">Dari Rekening</string>
+    <string name="berita">Berita:</string>
 
 </resources>
