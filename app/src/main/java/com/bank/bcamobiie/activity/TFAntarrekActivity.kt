@@ -1,5 +1,6 @@
 package com.bank.bcamobiie.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -21,7 +22,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.data.DataChoiceRek
 import com.bank.bcamobiie.databinding.ActivityTfantarrekBinding
-import com.bank.bcamobiie.databinding.AlertNewRekBinding
+import com.bank.bcamobiie.databinding.AlertSuccestfAntarrekBinding
 import com.bank.bcamobiie.databinding.InputBeritaDialogBinding
 import com.bank.bcamobiie.databinding.InputUangDialogBinding
 import com.bank.bcamobiie.utils.Utils
@@ -40,6 +41,9 @@ class TFAntarrekActivity : AppCompatActivity() {
     private var _alertInputBerita: InputBeritaDialogBinding? = null
     private val alertInputBerita: InputBeritaDialogBinding get() = _alertInputBerita!!
 
+    private var _alertTfDone: AlertSuccestfAntarrekBinding? = null
+    private val alertTfDone: AlertSuccestfAntarrekBinding get() = _alertTfDone!!
+
     private lateinit var edtNominalTf : EditText
     private val decimalFormat = DecimalFormat("#,###")
     private var isFormatting = false
@@ -49,6 +53,8 @@ class TFAntarrekActivity : AppCompatActivity() {
     private var indicatorChangeJob = Utils.indicatorChangeJob
     private lateinit var choiceRek: DataChoiceRek
     private lateinit var textRek: String
+    private lateinit var atasNameRek: String
+    private lateinit var noRek: String
     private lateinit var jenisCurrency: String
     private lateinit var nominalTf : String
     private lateinit var beritaTf : String
@@ -75,6 +81,8 @@ class TFAntarrekActivity : AppCompatActivity() {
         if (dataUser != null) {
             choiceRek = dataUser
             textRek = "${choiceRek.noRek} - ${choiceRek.nama}"
+            atasNameRek = choiceRek.nama!!
+            noRek = choiceRek.noRek!!
             binding.choiceRek.text = textRek
         }
 
@@ -147,6 +155,9 @@ class TFAntarrekActivity : AppCompatActivity() {
             setBerita.setOnClickListener {
                 setBerita()
             }
+            btnSend.setOnClickListener {
+                showAlertSuccessTf()
+            }
         }
 
     }
@@ -159,8 +170,7 @@ class TFAntarrekActivity : AppCompatActivity() {
         val dialog = alertBuilder.create()
         dialog.setCancelable(false)
         dialog.show()
-        val dpiCategory = resources.configuration.densityDpi
-        val widthMultiplier = when (dpiCategory) {
+        val widthMultiplier = when (resources.configuration.densityDpi) {
             DisplayMetrics.DENSITY_MEDIUM -> 0.80 // mdpi
             DisplayMetrics.DENSITY_HIGH -> 0.75   // hdpi
             DisplayMetrics.DENSITY_XHIGH -> 0.85  // xhdpi (80%)
@@ -210,7 +220,7 @@ class TFAntarrekActivity : AppCompatActivity() {
         alertInputUang.okBtn.setOnClickListener {
             val nominal = edtNominalTf.text.toString()
             binding.nominalTf.text = nominal
-            nominalTf = nominal
+            nominalTf = nominal.replace(".", "")
             dialog.dismiss()
         }
     }
@@ -223,8 +233,7 @@ class TFAntarrekActivity : AppCompatActivity() {
         val dialog = alertBuilder.create()
         dialog.setCancelable(false)
         dialog.show()
-        val dpiCategory = resources.configuration.densityDpi
-        val widthMultiplier = when (dpiCategory) {
+        val widthMultiplier = when (resources.configuration.densityDpi) {
             DisplayMetrics.DENSITY_MEDIUM -> 0.80 // mdpi
             DisplayMetrics.DENSITY_HIGH -> 0.75   // hdpi
             DisplayMetrics.DENSITY_XHIGH -> 0.85  // xhdpi (80%)
@@ -248,6 +257,44 @@ class TFAntarrekActivity : AppCompatActivity() {
         }
     }
 
+    private fun showAlertSuccessTf() {
+        val alertBuilder = AlertDialog.Builder(this)
+        _alertTfDone= AlertSuccestfAntarrekBinding.inflate(layoutInflater)
+        val view = alertTfDone.root
+        alertBuilder.setView(view)
+        val dialog = alertBuilder.create()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
+
+        alertTfDone.tvDateTf.text =Utils.getCurrentDateTime2()
+        alertTfDone.destinationRek.text = resources.getString(R.string.ke, noRek)
+        alertTfDone.atasNamaRek.text = atasNameRek
+        alertTfDone.beritaTf.text = beritaTf
+        val nominalTfFormat = nominalTf.let { Utils.formatToRupiah(it.toLong()) }
+        alertTfDone.nominalTf.text = nominalTfFormat
+
+        val widthMultiplier = when (resources.configuration.densityDpi) {
+            DisplayMetrics.DENSITY_MEDIUM -> 0.75 // mdpi
+            DisplayMetrics.DENSITY_HIGH -> 0.78   // hdpi
+            DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)
+            DisplayMetrics.DENSITY_XXHIGH -> 0.86  // xxhdpi (90%)
+            DisplayMetrics.DENSITY_XXXHIGH -> 0.90 // xxxhdpi (90%)
+            else -> 0.75
+        }
+        val displayMetrics = resources.displayMetrics
+        val width = (displayMetrics.widthPixels * widthMultiplier).toInt()
+
+        val height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.setLayout(width, height)
+        alertTfDone.apply {
+            btnOkSuccesTf.setOnClickListener {
+                dialog.dismiss()
+            }
+        }
+
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         indicatorChangeJob?.cancel()
@@ -269,6 +316,7 @@ class TFAntarrekActivity : AppCompatActivity() {
         const val KE_REK = "ke rekening"
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         super.onBackPressedDispatcher.onBackPressed()
         val intent = Intent(this, MainActivity::class.java)
@@ -276,6 +324,5 @@ class TFAntarrekActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 
 }

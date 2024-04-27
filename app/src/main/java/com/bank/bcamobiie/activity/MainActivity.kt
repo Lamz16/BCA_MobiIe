@@ -81,8 +81,7 @@ class MainActivity : AppCompatActivity() {
         alertBuilder.setView(view)
         val dialog = alertBuilder.create()
         dialog.show()
-        val dpiCategory = resources.configuration.densityDpi
-        val widthMultiplier = when (dpiCategory) {
+        val widthMultiplier = when (resources.configuration.densityDpi) {
             DisplayMetrics.DENSITY_MEDIUM -> 0.75 // mdpi
             DisplayMetrics.DENSITY_HIGH -> 0.78   // hdpi
             DisplayMetrics.DENSITY_XHIGH -> 0.80   // xhdpi (80%)

@@ -6,12 +6,14 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bank.bcamobiie.R
 import com.bank.bcamobiie.adapter.ChoiceRekAdapter
 import com.bank.bcamobiie.data.DataAkun
 import com.bank.bcamobiie.data.DataChoiceRek
 import com.bank.bcamobiie.data.DataRekening
 import com.bank.bcamobiie.databinding.ActivityChoicerekBinding
 import com.bank.bcamobiie.utils.Utils
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -81,6 +83,10 @@ class ChoicerekActivity : AppCompatActivity(), ChoiceRekAdapter.OnItemClickListe
                             }
                             adapter = ChoiceRekAdapter(showDataList, this@ChoicerekActivity)
                             binding.rvListRek.adapter = adapter
+                            val layoutManager = LinearLayoutManager(this@ChoicerekActivity)
+                            val itemDecoration = MaterialDividerItemDecoration(this@ChoicerekActivity, layoutManager.orientation).apply { isLastItemDecorated = false }
+                            itemDecoration.setDividerColorResource(this@ChoicerekActivity, R.color.color_line_divider3)
+                            binding.rvListRek.addItemDecoration(itemDecoration)
                             binding.rvListRek.layoutManager = LinearLayoutManager(this@ChoicerekActivity)
                             Log.d("ChoiceRekActivity", "Data Rekening: $listDataRek")
                         }

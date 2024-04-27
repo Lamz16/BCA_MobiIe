@@ -2,7 +2,6 @@ package com.bank.bcamobiie.activity
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Html
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,7 +19,6 @@ import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.databinding.ActivityMutasiBinding
 import com.bank.bcamobiie.databinding.AlertPeriodeSevenBinding
-import com.bank.bcamobiie.databinding.AlertWrongCodeAccesBinding
 import com.bank.bcamobiie.utils.Utils
 import com.bank.bcamobiie.viewmodel.FirebaseDataViewModel
 import com.bank.bcamobiie.viewmodel.InputDataViewModel

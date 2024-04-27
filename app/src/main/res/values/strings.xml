@@ -100,5 +100,10 @@
     <string name="daftar_transfer">Daftar Transfer</string>
     <string name="dari_rekening">Dari Rekening</string>
     <string name="berita">Berita:</string>
+    <string name="m_transfer_2">m-Transfer :</string>
+    <string name="berhasil">BERHASIL</string>
+    <string name="ke">Ke %s</string>
+    <string name="unnamed">DONI PRAMONO</string>
+    <string name="rp">Rp. %s</string>
 
 </resources>

@@ -30,6 +30,12 @@ object Utils {
         return dateFormat.format(currentDate)
     }
 
+    fun getCurrentDateTime2(): String {
+        val currentDate = Date()
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
+        return dateFormat.format(currentDate)
+    }
+
     fun getCurrentDateTimeYear(): String {
         val currentDate = Date()
         val dateFormat = SimpleDateFormat("dd/MM/YY HH:mm:ss", Locale.getDefault())
