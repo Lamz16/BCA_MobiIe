@@ -7,8 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.data.DataChoiceRek
+import java.util.Locale
 
-class ChoiceRekAdapter(private val daftarRekList: List<DataChoiceRek>,  private val listener: OnItemClickListener) : RecyclerView.Adapter<ChoiceRekAdapter.ChoiceViewHolder>() {
+class ChoiceRekAdapter(private var daftarRekList: List<DataChoiceRek>,  private val listener: OnItemClickListener) : RecyclerView.Adapter<ChoiceRekAdapter.ChoiceViewHolder>() {
+
+    var daftarRekListFull: List<DataChoiceRek> = mutableListOf()
 
     interface OnItemClickListener {
         fun onItemClick(dataChoiceRek: DataChoiceRek)
@@ -46,6 +49,15 @@ class ChoiceRekAdapter(private val daftarRekList: List<DataChoiceRek>,  private 
 
     override fun getItemCount() = daftarRekList.size
 
-
-
+    fun filterList(filterText: String) {
+        daftarRekList = if (filterText.isEmpty()) {
+            daftarRekListFull
+        } else {
+            daftarRekListFull.filter {
+                it.nama?.lowercase(Locale.getDefault())?.contains(filterText.lowercase(Locale.getDefault())) == true ||
+                        it.noRek?.contains(filterText) == true
+            }
+        }
+        notifyDataSetChanged()
+    }
 }

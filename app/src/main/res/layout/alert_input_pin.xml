@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_bg_pin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/line_alert"
+        android:layout_margin="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="2dp"
+        android:background="@color/black" >
+    <View
+        android:id="@+id/shinningLine"
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/lineshiningpintf"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvPinMbca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPinMbca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pin_m_bca"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shinningLine"/>
+
+    <EditText
+        android:id="@+id/inputPin"
+        style="@style/MyEditTextStyle3"
+        android:layout_width="230dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPinMbca" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/clickcancelalertlog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gd1"
+        app:layout_constraintTop_toBottomOf="@id/inputPin" />
+
+    <ImageButton
+        android:id="@+id/okBtn"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/clickokinputselector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gd1"
+        app:layout_constraintTop_toBottomOf="@id/inputPin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

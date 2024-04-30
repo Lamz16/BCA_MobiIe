@@ -28,6 +28,7 @@
     <color name="color_line_divider">#124E4E4E</color>
     <color name="color_line_divider3">#614E4E4E</color>
     <color name="color_line_divider2">#954E4E4E</color>
+    <color name="color_bg_pin">#F22E2E2E</color>
     <color name="navigation_bottom">#F1EFEF</color>
     <color name="navigation_bottom2">#FAF8F8</color>
     <color name="navigation_top">#F6F3F3</color>

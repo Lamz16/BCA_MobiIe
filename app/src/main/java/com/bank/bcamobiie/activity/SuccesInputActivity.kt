@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
+import com.bank.bcamobiie.data.DataRekening
 import com.bank.bcamobiie.databinding.ActivitySuccesInputBinding
 import com.bank.bcamobiie.databinding.AlertWrongCodeAccesBinding
 import com.bank.bcamobiie.datastore.Userdata
@@ -31,6 +32,7 @@ class SuccesInputActivity : AppCompatActivity() {
     private val viewModel: InputDataViewModel by viewModel()
 
     private lateinit var idKartu: String
+    private lateinit var pinRekening: String
     private lateinit var kodeAksesBaru: String
     private lateinit var database: DatabaseReference
 
@@ -41,23 +43,25 @@ class SuccesInputActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        database = FirebaseDatabase.getInstance("https://bca-mobiile-default-rtdb.firebaseio.com/").reference
+        database =
+            FirebaseDatabase.getInstance("https://bca-mobiile-default-rtdb.firebaseio.com/").reference
 
         binding.apply {
 
             idKartu = intent.getStringExtra(DATA_NOREK)!!
             val code1 = inputCodeAcces.text
             val code2 = inputCodeAcces2.text
+            getPinAkses()
 
             btnOkAccesCode.setOnClickListener {
-                if (code1.toString() == code2.toString() && code1.toString() != "" && code2.toString() !="") {
-                    viewModel.saveSession(Userdata(idKartu, code1.toString(), true))
+                if (code1.toString() == code2.toString() && code1.toString() != "" && code2.toString() != "") {
+                    viewModel.saveSession(Userdata(idKartu, code1.toString(), pinRekening, true))
                     kodeAksesBaru = code1.toString()
                     updateKodeAkses()
 
-                } else if (code1.toString() == "" || code2.toString() ==""){
+                } else if (code1.toString() == "" || code2.toString() == "") {
                     showAlertpPaswordNull()
-                }else{
+                } else {
                     showAlert()
                 }
             }
@@ -74,11 +78,16 @@ class SuccesInputActivity : AppCompatActivity() {
                         for (snapshot in dataSnapshot.children) {
                             val key = snapshot.key
                             if (key != null) {
-                                database.child("data_akun").child(key).child("kodeAcces").setValue(kodeAksesBaru)
+                                database.child("data_akun").child(key).child("kodeAcces")
+                                    .setValue(kodeAksesBaru)
                                     .addOnCompleteListener { task ->
                                         if (task.isSuccessful) {
-                                            val intent = Intent(this@SuccesInputActivity, MainActivity::class.java)
-                                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                            val intent = Intent(
+                                                this@SuccesInputActivity,
+                                                MainActivity::class.java
+                                            )
+                                            intent.flags =
+                                                Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                             startActivity(intent)
                                             finish()
                                         }
@@ -96,6 +105,27 @@ class SuccesInputActivity : AppCompatActivity() {
 
     }
 
+    private fun getPinAkses() {
+        val query: Query = database.child("data_rekening").orderByChild("idKartu").equalTo(idKartu)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (snapshot in dataSnapshot.children) {
+                        val dataRekening = snapshot.getValue(DataRekening::class.java)
+                        val pin = dataRekening?.pin
+
+                        pinRekening = pin!!
+
+                        break
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        })
+
+    }
 
 
     private fun showAlert() {
@@ -133,7 +163,6 @@ class SuccesInputActivity : AppCompatActivity() {
 
     companion object {
         const val DATA_NOREK = "data norek"
-        const val DATA_PW = "data pw"
     }
 
 }

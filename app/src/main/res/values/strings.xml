@@ -105,5 +105,6 @@
     <string name="ke">Ke %s</string>
     <string name="unnamed">DONI PRAMONO</string>
     <string name="rp">Rp. %s</string>
+    <string name="pin_m_bca">PIN m-BCA:</string>
 
 </resources>

@@ -20,9 +20,11 @@ class UserPreference (private val dataStore: DataStore<Preferences>) {
         dataStore.edit { preferences ->
             preferences[NOREK_KEY] = user.idKartu
             preferences[PIN_KEY] = user.pin
+            preferences[PW_KEY] = user.pw
             preferences[IS_LOGIN_KEY] = true
             Log.d(TAG, "saveSession: norek is ${user.idKartu} ")
             Log.d(TAG, "saveSession: pin is ${user.pin} ")
+            Log.d(TAG, "saveSession: pinRekening is ${user.pw} ")
             Log.d(TAG, "saveSession: login is ${user.isLogin} ")
         }
 
@@ -33,6 +35,7 @@ class UserPreference (private val dataStore: DataStore<Preferences>) {
             Userdata(
                 preferences[NOREK_KEY] ?: "",
                 preferences[PIN_KEY] ?: "",
+                preferences[PW_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
             )
         }
@@ -40,8 +43,10 @@ class UserPreference (private val dataStore: DataStore<Preferences>) {
 
 
     companion object {
+        const val TAG = "DATASTORE"
         private val NOREK_KEY = stringPreferencesKey("norek")
         private val PIN_KEY = stringPreferencesKey("pin")
+        private val PW_KEY = stringPreferencesKey("pw pin")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
 
     }

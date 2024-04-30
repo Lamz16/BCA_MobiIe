@@ -1,6 +1,7 @@
 package com.bank.bcamobiie.activity
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -8,10 +9,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.TextView
@@ -22,13 +25,16 @@ import androidx.lifecycle.lifecycleScope
 import com.bank.bcamobiie.R
 import com.bank.bcamobiie.data.DataChoiceRek
 import com.bank.bcamobiie.databinding.ActivityTfantarrekBinding
+import com.bank.bcamobiie.databinding.AlertInputPinBinding
 import com.bank.bcamobiie.databinding.AlertSuccestfAntarrekBinding
 import com.bank.bcamobiie.databinding.InputBeritaDialogBinding
 import com.bank.bcamobiie.databinding.InputUangDialogBinding
 import com.bank.bcamobiie.utils.Utils
+import com.bank.bcamobiie.viewmodel.InputDataViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 
 class TFAntarrekActivity : AppCompatActivity() {
@@ -44,9 +50,14 @@ class TFAntarrekActivity : AppCompatActivity() {
     private var _alertTfDone: AlertSuccestfAntarrekBinding? = null
     private val alertTfDone: AlertSuccestfAntarrekBinding get() = _alertTfDone!!
 
+    private var _alertInputPin: AlertInputPinBinding? = null
+    private val alertInputPin: AlertInputPinBinding get() = _alertInputPin!!
+
     private lateinit var edtNominalTf : EditText
     private val decimalFormat = DecimalFormat("#,###")
     private var isFormatting = false
+
+    private val viewModel: InputDataViewModel by viewModel()
 
     private val indicatorImages = Utils.indicatorImages
     private val indicatorChangeDelay = Utils.indicatorChangeDelay
@@ -58,6 +69,7 @@ class TFAntarrekActivity : AppCompatActivity() {
     private lateinit var jenisCurrency: String
     private lateinit var nominalTf : String
     private lateinit var beritaTf : String
+    private lateinit var pin : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +88,10 @@ class TFAntarrekActivity : AppCompatActivity() {
         } else {
             @Suppress("DEPRECATION")
             intent.getParcelableExtra(KE_REK)
+        }
+
+        viewModel.getSession().observe(this@TFAntarrekActivity){ data ->
+            pin = data.pw
         }
 
         if (dataUser != null) {
@@ -136,7 +152,6 @@ class TFAntarrekActivity : AppCompatActivity() {
 
             dialog.show()
 
-            // Set divider
             dialog.listView.divider =
                 ColorDrawable(ContextCompat.getColor(this, R.color.line_alert))
             dialog.listView.dividerHeight = resources.getDimensionPixelSize(R.dimen.divider_height)
@@ -156,7 +171,7 @@ class TFAntarrekActivity : AppCompatActivity() {
                 setBerita()
             }
             btnSend.setOnClickListener {
-                showAlertSuccessTf()
+                setPin()
             }
         }
 
@@ -254,6 +269,45 @@ class TFAntarrekActivity : AppCompatActivity() {
             binding.setTvBerita.text = berita
             beritaTf = berita
             dialog.dismiss()
+        }
+    }
+
+    private fun setPin(){
+        val alertBuilder = AlertDialog.Builder(this)
+        _alertInputPin = AlertInputPinBinding.inflate(layoutInflater)
+        val view = alertInputPin.root
+        alertBuilder.setView(view)
+        val dialog = alertBuilder.create()
+        dialog.setCancelable(false)
+        dialog.show()
+        val widthMultiplier = when (resources.configuration.densityDpi) {
+            DisplayMetrics.DENSITY_MEDIUM -> 0.80
+            DisplayMetrics.DENSITY_HIGH -> 0.75
+            DisplayMetrics.DENSITY_XHIGH -> 0.85
+            DisplayMetrics.DENSITY_XXHIGH -> 0.90
+            DisplayMetrics.DENSITY_XXXHIGH -> 0.90
+            else -> 0.82
+        }
+        val displayMetrics = resources.displayMetrics
+        val width = (displayMetrics.widthPixels * widthMultiplier).toInt()
+
+        val height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.window?.setLayout(width, height)
+
+        alertInputPin.cancelBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        alertInputPin.okBtn.setOnClickListener {
+            val pinUser = alertInputPin.inputPin.text.toString()
+
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(alertInputPin.inputPin.windowToken, 0)
+
+           if (pinUser == pin){
+               dialog.dismiss()
+               showAlertSuccessTf()
+               Log.d("Input Pin", "setPin: $pinUser")
+           }
         }
     }
 

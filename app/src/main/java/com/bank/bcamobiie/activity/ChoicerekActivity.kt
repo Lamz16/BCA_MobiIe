@@ -2,6 +2,8 @@ package com.bank.bcamobiie.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -82,7 +84,24 @@ class ChoicerekActivity : AppCompatActivity(), ChoiceRekAdapter.OnItemClickListe
                                 }
                             }
                             adapter = ChoiceRekAdapter(showDataList, this@ChoicerekActivity)
+                            adapter.daftarRekListFull = showDataList
                             binding.rvListRek.adapter = adapter
+
+
+                            binding.search.addTextChangedListener(object : TextWatcher {
+                                override fun afterTextChanged(s: Editable?) {
+                                    adapter.filterList(s.toString())
+                                }
+
+                                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                                }
+
+                                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                                }
+                            })
+
                             val layoutManager = LinearLayoutManager(this@ChoicerekActivity)
                             val itemDecoration = MaterialDividerItemDecoration(this@ChoicerekActivity, layoutManager.orientation).apply { isLastItemDecorated = false }
                             itemDecoration.setDividerColorResource(this@ChoicerekActivity, R.color.color_line_divider3)
@@ -108,6 +127,8 @@ class ChoicerekActivity : AppCompatActivity(), ChoiceRekAdapter.OnItemClickListe
             database.child("data_akun").addListenerForSingleValueEvent(akunListener)
         }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
